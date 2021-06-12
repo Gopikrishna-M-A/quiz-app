@@ -102,3 +102,22 @@ body.neutral{
     border: none;
     background-color: rgb(91 67 162);
 }
+button.correct{
+   
+    background-color: rgb(16, 104, 28);  
+}
+button.wrong{
+    background-color: rgb(136, 20, 20);
+}       
+button.neutral{
+    background-color: #7b4fcc;
+}
+
+button.correct:hover{
+    border: 2px solid #000000;
+    background-color: rgb(16, 104, 28);  
+}
+button.wrong:hover{
+    border: 2px solid #000000;
+    background-color: rgb(136, 20, 20);
+}

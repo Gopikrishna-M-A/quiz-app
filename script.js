@@ -45,6 +45,8 @@ var questions= [
         ]
     }
 ]
+var ans = false
+var button
 var score = 0
 var i
 var num = 0
@@ -61,94 +63,111 @@ var bodyElement = document.getElementById('body')
 var scoreButtonElement = document.getElementById('score-btn')
 
 
-startButtonElement.addEventListener("click",()=>{
-
-    startGame()
-})
-
 
 function startGame(){
+    optionOne.disabled = false
+    optionTwo.disabled = false
+    optionThree.disabled = false
+    optionFour.disabled = false
+    optionOne.classList.remove('correct')
+    optionTwo.classList.remove('correct')
+    optionThree.classList.remove('correct')
+    optionFour.classList.remove('correct')
+    optionOne.classList.remove('wrong')
+    optionTwo.classList.remove('wrong')
+    optionThree.classList.remove('wrong')
+    optionFour.classList.remove('wrong')
+    console.log("start ");
     resetColor()
     startButtonElement.classList.add("hide")
     questionContainerElement.classList.remove('hide')
-    updateOptions(questionNumber())
-    checkClickedButton(correctAnswer(questionNumber()))
-    nextButtonClicked()
-   
+    updateOptions()
+    checkClickedButton(correctAnswer())
+
+    num++
+  
   
  
    
 
 }
 
-function updateOptions(qno) {
-        console.log(qno);
-        questionElement.innerHTML = questions[qno].question
-        optionOne.innerHTML = questions[qno].answer[0].text
-        optionTwo.innerHTML = questions[qno].answer[1].text
-        optionThree.innerHTML = questions[qno].answer[2].text
-        optionFour.innerHTML = questions[qno].answer[3].text
+function updateOptions() {
+    console.log('update question');
+        questionElement.innerHTML = questions[num].question
+        optionOne.innerHTML = questions[num].answer[0].text
+        optionTwo.innerHTML = questions[num].answer[1].text
+        optionThree.innerHTML = questions[num].answer[2].text
+        optionFour.innerHTML = questions[num].answer[3].text
 
    
 }
 
-function questionNumber(){
-    if(nextButtonValue){
-        num++
-       
-    }
-    nextButtonValue=false
-  return(num)
-}
+// function questionNumber(){
+//   return(num)
+ 
+// }
 
 function checkClickedButton(answer){
-  
     for(i = 0; i<4 ; i++){
-        document.getElementsByClassName('btn')[i].addEventListener('click',(e)=>{
-           var clickedButtonId = e.target.innerHTML
-           if(clickedButtonId==answer){
-               score = score + 1
+            document.getElementsByClassName('btn')[i].addEventListener('click',(e)=>{
+            optionOne.disabled = true
+            optionTwo.disabled = true
+            optionThree.disabled = true
+            optionFour.disabled = true
+            var clickedButtonId = e.target.innerHTML
+            button = e.target.id
+           if(clickedButtonId==answer){ 
+            var buttonElement = document.getElementById(button)
+            buttonElement.classList.remove('wrong')
+            buttonElement.classList.add('correct')
+            ans = true
             bodyElement.classList.remove('wrong')
             bodyElement.classList.remove('neutral') 
             bodyElement.classList.add('correct')
+            
            }else {
+            var buttonElement = document.getElementById(button)
+            buttonElement.classList.remove('correct')
+            buttonElement.classList.add('wrong')
             bodyElement.classList.remove('correct')
             bodyElement.classList.remove('neutral')
-            bodyElement.classList.add('wrong')
+            bodyElement.classList.add('wrong')  
            }
            nextButtonElement.classList.remove('hide')
         })
     }
-
+    if(ans){
+        score++
+        ans = false
+    }
+    nextButtonClicked()
 }
 
-function correctAnswer(qno){
-    var ans1 = questions[qno].answer[0].correct
-    var ans2 = questions[qno].answer[1].correct
-    var ans3 = questions[qno].answer[2].correct
-    var ans4 = questions[qno].answer[3].correct
+function correctAnswer(){
+    console.log('correct ans');
+    var ans1 = questions[num].answer[0].correct
+    var ans2 = questions[num].answer[1].correct
+    var ans3 = questions[num].answer[2].correct
+    var ans4 = questions[num].answer[3].correct
     if(ans1){
-        return(questions[qno].answer[0].text)
+        return(questions[num].answer[0].text)
     }else if(ans2){
-        return(questions[qno].answer[1].text)
+        return(questions[num].answer[1].text)
     }else if(ans3){
-         return(questions[qno].answer[2].text)  
+         return(questions[num].answer[2].text)  
     }else if(ans4){
-        return(questions[qno].answer[3].text)
+        return(questions[num].answer[3].text)
     }
 }
 
-function nextButtonClicked(){
-  
+function nextButtonClicked(){ 
     nextButtonElement.addEventListener('click',()=>{
-        
-            nextButtonValue=true
-            nextButtonElement.classList.add('hide')
-           
-
-            if (num===6){
+        console.log('next button click'+num);
+            if (num===5){
                 endGame()
             }else{
+                nextButtonElement.classList.add('hide')
                 startGame()
             }
         
@@ -158,16 +177,16 @@ function nextButtonClicked(){
   
 }
 function resetColor(){
+    console.log('reset color');
     bodyElement.classList.remove('correct')
     bodyElement.classList.remove('wrong')
     bodyElement.classList.add('neutral')
 }
 
 function endGame(){
-    num = 0
     startButtonElement.classList.add("hide")
     questionContainerElement.classList.add('hide')
     nextButtonElement.classList.add('hide')
     scoreButtonElement.classList.remove('hide')
-    scoreButtonElement.innerHTML='score is'+" "+ score
+    scoreButtonElement.innerHTML='score is'+" "+ score+"/3"
 }
