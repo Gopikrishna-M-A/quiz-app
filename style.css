@@ -5,7 +5,7 @@
 body{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(43 0 99);
+    background-color: rgb(5, 52, 114);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,8 @@ body{
 .container{
     border-radius: 5px;
     width: 800px;
-    max-width: 80%;
-    background-color: rgb(91 67 162);
+    max-width: 50%;
+    background-color:#fff;
     box-shadow: 0 0 60px 5px;
     display: flex;
     justify-content: center;
@@ -33,7 +33,7 @@ body{
     margin: 10px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: #000000;
     text-align: center;
 }
 .btn-grid{
@@ -59,7 +59,7 @@ body{
     font-size: 15px;
     color: white;
     border: 1px solid #25054e;
-    background-color: #7b4fcc;
+    background-color: rgb(16, 102, 214);
     font-weight: bold;
     font-family:Arial, Helvetica, sans-serif;
     border-radius: 5px;
@@ -69,7 +69,7 @@ body{
 .btn:hover{
     border: 2px solid #25054e;
     
-    background-color: #6d21be; 
+    background-color: rgb(14, 60, 121);
 }
 .start-btn,.next-btn{
     font-size: 20px;
@@ -77,7 +77,7 @@ body{
 }
 .start-btn:hover,
 .next-btn:hover{
-    background-color: #6d21be;
+    background-color: rgb(14, 60, 121);
     border: 1px solid #25054e;
 }
 
@@ -89,10 +89,11 @@ body.wrong{
     background-color: rgb(136, 20, 20);
 }       
 body.neutral{
-    background-color: rgb(43 0 99);
+    background-color: rgb(5, 52, 114);
 }
 .score-btn {
-    background-color: rgb(91 67 162);
+    color: #000000;
+    background-color:#fff;
     border: none;
     font-size: 50px;
     min-width: 200px;
@@ -100,24 +101,24 @@ body.neutral{
 }
 .score-btn:hover{
     border: none;
-    background-color: rgb(91 67 162);
+    background-color: #fff;
 }
 button.correct{
    
-    background-color: rgb(16, 104, 28);  
+    background-color: rgb(29, 190, 50);  
 }
 button.wrong{
-    background-color: rgb(136, 20, 20);
+    background-color: rgb(235, 54, 54);
 }       
 button.neutral{
-    background-color: #7b4fcc;
+    background-color: rgb(16, 102, 214);
 }
 
 button.correct:hover{
     border: 2px solid #000000;
-    background-color: rgb(16, 104, 28);  
+    background-color: rgb(29, 190, 50);  
 }
 button.wrong:hover{
     border: 2px solid #000000;
-    background-color: rgb(136, 20, 20);
+    background-color: rgb(235, 54, 54);
 }
