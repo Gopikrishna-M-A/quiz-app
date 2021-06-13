@@ -15,7 +15,7 @@ body{
 .container{
     border-radius: 5px;
     width: 800px;
-    max-width: 50%;
+    max-width: 80%;
     background-color:#fff;
     box-shadow: 0 0 60px 5px;
     display: flex;
